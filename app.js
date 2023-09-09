@@ -1,6 +1,4 @@
 
-
-
 let $ms = document.querySelector('#milliseconds');
 let $seconds = document.querySelector('#seconds');
 let $minutes = document.querySelector('#minutes');
@@ -17,11 +15,14 @@ let $btnRestart = document.querySelector('#btn-restart');
 $btnPlay.addEventListener("click", timer);
 $btnRestart.addEventListener("click", restart);
 
-let $flipCard = document.querySelectorAll('.flip-card-inner');
+let $flipCard = document.querySelector('#card-1');
 
-console.log($flipCard);
+$flipCard.addEventListener("click", flipCard);
 
 function flipCard(){
+  
+	document.querySelector('.flip-card .flip-card-inner').style.transform = 'rotateY(180deg)';
+
 }
 
 function timer(){
