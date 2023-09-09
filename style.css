@@ -1,0 +1,117 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Major Mono Display', monospace;
+  line-height: 1.6;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  background-image: linear-gradient(to right, #fc5c7d, #6a82fb);  
+}
+
+.title::first-letter{
+  font-size: 3.5rem;
+}
+
+.title{
+  margin: 24px;
+}
+.menu-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.time{
+  margin: 20px;
+}
+.attempts{
+  margin: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.btn {
+  width: 200px;
+  height: 50px;
+  margin: 20px;
+}
+.item-data{
+  width: 45%;
+  height: 85%;
+  margin: 10px;
+  text-align: center;
+}
+
+.card-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 10px;
+    
+}
+
+.glass{
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); 
+}
+.flip-card{
+  background-color: transparent;
+  width: 130px;
+  height: 230px;
+  margin: 10px;
+  border-radius: 8px;
+  perspective: 1000px;
+}
+
+.flip-card-inner{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+
+
+.flip-card-front, .flip-card-back{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-backface-visibility: hidden; /* Safary */
+  backface-visibility: hidden;
+
+}
+
+.flip-card-front{
+  background-color:  #FFD43B;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.2px);
+  -webkit-backdrop-filter: blur(6.2px);
+}
+
+.flip-card-back{
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+
