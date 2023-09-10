@@ -15,16 +15,47 @@ let $btnRestart = document.querySelector('#btn-restart');
 $btnPlay.addEventListener("click", timer);
 $btnRestart.addEventListener("click", restart);
 
-let $flipCard = document.querySelector('#card-1');
 
-$flipCard.addEventListener("click", flipCard);
+const $cards = document.querySelectorAll('.flip-card-inner');
 
-function flipCard(){
-  
-	document.querySelector('.flip-card .flip-card-inner').style.transform = 'rotateY(180deg)';
 
+toFlipOrNotToFlip($cards)
+function toFlipOrNotToFlip(cards){
+	
+	cards.forEach(function(card) {
+		card.addEventListener("click", () => {
+			const doTheyHaveStyles = card.style.transform !== "";
+			if(!doTheyHaveStyles){
+				addStyle(card);
+			}
+			else{
+				removeStyle(card);
+			}
+		});
+	
+	});
+}
+function addStyle(card) {
+	
+	const rotateYOrX = randomFlip()
+
+	card.querySelector('.flip-card-back').style.transform = rotateYOrX
+	card.style.transform = rotateYOrX;
+}
+function removeStyle(card){
+	
+	card.style.transform = '';
+	card.querySelector('.flip-card-back').style.transform = '';
 }
 
+function randomFlip(){
+
+	let number = Math.ceil(Math.random()*2);
+
+	rotateYOrX = number === 1 ? 'rotateY(180deg)' : 'rotateX(180deg)'; 
+
+	return rotateYOrX;
+}
 function timer(){
 
 	clearInterval(interval);	
