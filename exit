@@ -1,70 +1,0 @@
-[1mdiff --git a/app.js b/app.js[m
-[1mindex 2e1c79d..ff11d8b 100644[m
-[1m--- a/app.js[m
-[1m+++ b/app.js[m
-[36m@@ -15,16 +15,47 @@[m [mlet $btnRestart = document.querySelector('#btn-restart');[m
- $btnPlay.addEventListener("click", timer);[m
- $btnRestart.addEventListener("click", restart);[m
- [m
-[31m-let $flipCard = document.querySelector('#card-1');[m
- [m
-[31m-$flipCard.addEventListener("click", flipCard);[m
-[32m+[m[32mconst $cards = document.querySelectorAll('.flip-card-inner');[m[41m[m
- [m
-[31m-function flipCard(){[m
-[31m-  [m
-[31m-	document.querySelector('.flip-card .flip-card-inner').style.transform = 'rotateY(180deg)';[m
- [m
-[32m+[m[32mtoFlipOrNotToFlip($cards)[m[41m[m
-[32m+[m[32mfunction toFlipOrNotToFlip(cards){[m[41m[m
-[32m+[m[41m	[m
-[32m+[m	[32mcards.forEach(function(card) {[m[41m[m
-[32m+[m		[32mcard.addEventListener("click", () => {[m[41m[m
-[32m+[m			[32mconst doTheyHaveStyles = card.style.transform !== "";[m[41m[m
-[32m+[m			[32mif(!doTheyHaveStyles){[m[41m[m
-[32m+[m				[32maddStyle(card);[m[41m[m
-[32m+[m			[32m}[m[41m[m
-[32m+[m			[32melse{[m[41m[m
-[32m+[m				[32mremoveStyle(card);[m[41m[m
-[32m+[m			[32m}[m[41m[m
-[32m+[m		[32m});[m[41m[m
-[32m+[m[41m	[m
-[32m+[m	[32m});[m[41m[m
- }[m
-[32m+[m[32mfunction addStyle(card) {[m[41m[m
-[32m+[m[41m	[m
-[32m+[m	[32mconst rotateYOrX = randomFlip()[m[41m[m
- [m
-[32m+[m	[32mcard.querySelector('.flip-card-back').style.transform = rotateYOrX[m[41m[m
-[32m+[m	[32mcard.style.transform = rotateYOrX;[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[32mfunction removeStyle(card){[m[41m[m
-[32m+[m[41m	[m
-[32m+[m	[32mcard.style.transform = '';[m[41m[m
-[32m+[m	[32mcard.querySelector('.flip-card-back').style.transform = '';[m[41m[m
-[32m+[m[32m}[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32mfunction randomFlip(){[m[41m[m
-[32m+[m[41m[m
-[32m+[m	[32mlet number = Math.ceil(Math.random()*2);[m[41m[m
-[32m+[m[41m[m
-[32m+[m	[32mrotateYOrX = number === 1 ? 'rotateY(180deg)' : 'rotateX(180deg)';[m[41m [m
-[32m+[m[41m[m
-[32m+[m	[32mreturn rotateYOrX;[m[41m[m
-[32m+[m[32m}[m[41m[m
- function timer(){[m
- [m
- 	clearInterval(interval);	[m
-[1mdiff --git a/index.html b/index.html[m
-[1mindex 692bb5e..6da4ceb 100644[m
-[1m--- a/index.html[m
-[1m+++ b/index.html[m
-[36m@@ -37,7 +37,7 @@[m
-      </main>[m
-   </div>[m
-   <div class="card-container">[m
-[31m-    <div class="flip-card">[m
-[32m+[m[32m    <div id="card-1" class="flip-card">[m[41m[m
-       <div id="card-1" class="flip-card-inner">[m
-         <div class="flip-card-front">[m
-           <i class="fa-solid fa-question fa-2xl"></i>[m
